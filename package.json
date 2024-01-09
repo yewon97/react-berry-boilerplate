@@ -41,7 +41,9 @@
   },
   "packageManager": "yarn@4.0.2",
   "devDependencies": {
+    "@babel/preset-react": "^7.23.3",
     "@craco/craco": "^7.1.0",
+    "@emotion/babel-plugin": "^11.11.0",
     "@testing-library/jest-dom": "^6.2.0",
     "@types/eslint": "^8",
     "@types/testing-library__jest-dom": "^6.0.0",
