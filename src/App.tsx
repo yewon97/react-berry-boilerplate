@@ -1,10 +1,14 @@
-import React from 'react'
+import { css } from '@emotion/react'
 import logo from './logo.svg'
 import './App.css'
 
+const containerStyles = css`
+  background-color: pink;
+`
+
 function App() {
   return (
-    <div className="App">
+    <div className="App" css={containerStyles}>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
