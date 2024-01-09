@@ -28,6 +28,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@craco/craco", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:7.1.0"],\
           ["@emotion/css", "npm:11.11.2"],\
+          ["@emotion/react", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:11.11.3"],\
           ["@emotion/styled", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:11.11.0"],\
           ["@testing-library/jest-dom", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:6.2.0"],\
           ["@testing-library/react", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:13.4.0"],\
@@ -3620,6 +3621,36 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@emotion/react", [\
+      ["npm:11.11.3", {\
+        "packageLocation": "./.yarn/cache/@emotion-react-npm-11.11.3-5802f4fe7f-f7b98557b7.zip/node_modules/@emotion/react/",\
+        "packageDependencies": [\
+          ["@emotion/react", "npm:11.11.3"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:11.11.3", {\
+        "packageLocation": "./.yarn/__virtual__/@emotion-react-virtual-02ddb3886b/0/cache/@emotion-react-npm-11.11.3-5802f4fe7f-f7b98557b7.zip/node_modules/@emotion/react/",\
+        "packageDependencies": [\
+          ["@emotion/react", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:11.11.3"],\
+          ["@babel/runtime", "npm:7.23.8"],\
+          ["@emotion/babel-plugin", "npm:11.11.0"],\
+          ["@emotion/cache", "npm:11.11.0"],\
+          ["@emotion/serialize", "npm:1.1.3"],\
+          ["@emotion/use-insertion-effect-with-fallbacks", "virtual:02ddb3886be23baca3624277bc86c2a7fc2e58a4113c16a39ef5374a0456ccdb3424502d0dd7c23a7b89d30b76d38b8c79ba94bd68555b2e6400b86754d7b156#npm:1.0.1"],\
+          ["@emotion/utils", "npm:1.2.1"],\
+          ["@emotion/weak-memoize", "npm:0.3.1"],\
+          ["@types/react", "npm:18.2.47"],\
+          ["hoist-non-react-statics", "npm:3.3.2"],\
+          ["react", "npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@emotion/serialize", [\
       ["npm:1.1.3", {\
         "packageLocation": "./.yarn/cache/@emotion-serialize-npm-1.1.3-0ce9e71d95-48d8892366.zip/node_modules/@emotion/serialize/",\
@@ -3658,9 +3689,9 @@ const RAW_RUNTIME_STATE =
           ["@babel/runtime", "npm:7.23.8"],\
           ["@emotion/babel-plugin", "npm:11.11.0"],\
           ["@emotion/is-prop-valid", "npm:1.2.1"],\
-          ["@emotion/react", null],\
+          ["@emotion/react", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:11.11.3"],\
           ["@emotion/serialize", "npm:1.1.3"],\
-          ["@emotion/use-insertion-effect-with-fallbacks", "virtual:3cb05941ffb007f020b34339fb6fd413358b15f82fd21a6f064ee99e4620a3a9abbd2a4396a52c011d41a9a38dde8871be4450e8b59a8210b3048487a7e7ba1f#npm:1.0.1"],\
+          ["@emotion/use-insertion-effect-with-fallbacks", "virtual:02ddb3886be23baca3624277bc86c2a7fc2e58a4113c16a39ef5374a0456ccdb3424502d0dd7c23a7b89d30b76d38b8c79ba94bd68555b2e6400b86754d7b156#npm:1.0.1"],\
           ["@emotion/utils", "npm:1.2.1"],\
           ["@types/emotion__react", null],\
           ["@types/react", "npm:18.2.47"],\
@@ -3692,10 +3723,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:3cb05941ffb007f020b34339fb6fd413358b15f82fd21a6f064ee99e4620a3a9abbd2a4396a52c011d41a9a38dde8871be4450e8b59a8210b3048487a7e7ba1f#npm:1.0.1", {\
-        "packageLocation": "./.yarn/__virtual__/@emotion-use-insertion-effect-with-fallbacks-virtual-f56d4d1aa3/0/cache/@emotion-use-insertion-effect-with-fallbacks-npm-1.0.1-730758c66c-7d7ead9ba3.zip/node_modules/@emotion/use-insertion-effect-with-fallbacks/",\
+      ["virtual:02ddb3886be23baca3624277bc86c2a7fc2e58a4113c16a39ef5374a0456ccdb3424502d0dd7c23a7b89d30b76d38b8c79ba94bd68555b2e6400b86754d7b156#npm:1.0.1", {\
+        "packageLocation": "./.yarn/__virtual__/@emotion-use-insertion-effect-with-fallbacks-virtual-3c38aff60b/0/cache/@emotion-use-insertion-effect-with-fallbacks-npm-1.0.1-730758c66c-7d7ead9ba3.zip/node_modules/@emotion/use-insertion-effect-with-fallbacks/",\
         "packageDependencies": [\
-          ["@emotion/use-insertion-effect-with-fallbacks", "virtual:3cb05941ffb007f020b34339fb6fd413358b15f82fd21a6f064ee99e4620a3a9abbd2a4396a52c011d41a9a38dde8871be4450e8b59a8210b3048487a7e7ba1f#npm:1.0.1"],\
+          ["@emotion/use-insertion-effect-with-fallbacks", "virtual:02ddb3886be23baca3624277bc86c2a7fc2e58a4113c16a39ef5374a0456ccdb3424502d0dd7c23a7b89d30b76d38b8c79ba94bd68555b2e6400b86754d7b156#npm:1.0.1"],\
           ["@types/react", "npm:18.2.47"],\
           ["react", "npm:18.2.0"]\
         ],\
@@ -11533,6 +11564,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["hoist-non-react-statics", [\
+      ["npm:3.3.2", {\
+        "packageLocation": "./.yarn/cache/hoist-non-react-statics-npm-3.3.2-e7b709e6c1-1acbe85f33.zip/node_modules/hoist-non-react-statics/",\
+        "packageDependencies": [\
+          ["hoist-non-react-statics", "npm:3.3.2"],\
+          ["react-is", "npm:16.13.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["hoopy", [\
       ["npm:0.1.4", {\
         "packageLocation": "./.yarn/cache/hoopy-npm-0.1.4-32e7a5b08e-7a73f1839a.zip/node_modules/hoopy/",\
@@ -16761,6 +16802,7 @@ const RAW_RUNTIME_STATE =
           ["react-berry-boilerplate", "workspace:."],\
           ["@craco/craco", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:7.1.0"],\
           ["@emotion/css", "npm:11.11.2"],\
+          ["@emotion/react", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:11.11.3"],\
           ["@emotion/styled", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:11.11.0"],\
           ["@testing-library/jest-dom", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:6.2.0"],\
           ["@testing-library/react", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:13.4.0"],\
