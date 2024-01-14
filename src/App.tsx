@@ -3,6 +3,7 @@ import Text from '@shared/Text'
 import Button from '@shared/Button'
 import Input from '@components/shared/Input'
 import TextField from '@components/shared/TextField'
+import Alert from './components/shared/Alert'
 
 function App() {
   return (
@@ -47,6 +48,14 @@ function App() {
       <div style={{ height: 10, width: '100%', background: '#efefef' }} />
       <TextField label={'아이디'} />
       <TextField label={'패스워드'} hasError={true} />
+
+      <div style={{ height: 10, width: '100%', background: '#efefef' }} />
+      <Alert
+        open={true}
+        description="안녕하세요"
+        title="알럿이 떴습니다."
+        onButtonClick={() => {}}
+      />
     </div>
   )
 }
