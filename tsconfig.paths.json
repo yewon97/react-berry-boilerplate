@@ -7,7 +7,10 @@
       "@styles/*": ["src/styles/*"],
       "@shared/*": ["src/components/shared/*"],
       "@contexts/*": ["src/contexts/*"],
-      "@models/*": ["src/models/*"]
+      "@models/*": ["src/models/*"],
+      "@pages/*": ["src/pages/*"],
+      "@remote/*": ["src/remote/*"],
+      "@constants": ["src/constants/index.ts"]
     }
   }
 }
