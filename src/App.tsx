@@ -9,6 +9,7 @@ import { useAlertContext } from '@contexts/AlertContext'
 
 function App() {
   const { open } = useAlertContext()
+  console.log('open: ', open)
 
   return (
     <div>
