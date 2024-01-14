@@ -1,6 +1,14 @@
 import Top from '@shared/Top'
+import { getCards } from '@remote/card'
+import { useEffect } from 'react'
 
 export default function HomePage() {
+  useEffect(() => {
+    getCards().then((res) => {
+      console.log('res: ', res)
+    })
+  }, [])
+
   return (
     <div>
       <Top
