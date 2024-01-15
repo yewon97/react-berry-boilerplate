@@ -53,6 +53,7 @@ const RAW_RUNTIME_STATE =
           ["react-query", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:3.39.3"],\
           ["react-router-dom", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:6.21.2"],\
           ["react-scripts", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:5.0.1"],\
+          ["swiper", "npm:9.4.1"],\
           ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"],\
           ["web-vitals", "npm:2.1.4"]\
         ],\
@@ -16984,6 +16985,7 @@ const RAW_RUNTIME_STATE =
           ["react-query", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:3.39.3"],\
           ["react-router-dom", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:6.21.2"],\
           ["react-scripts", "virtual:e20af2593354edd299f9e0c7399984f0816736969b992af1234dadafb45f7128c004cd0b1ff575dc1c5781f96de24b34e0f93cd3ad29da5648d471a0d6d107b3#npm:5.0.1"],\
+          ["swiper", "npm:9.4.1"],\
           ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"],\
           ["web-vitals", "npm:2.1.4"]\
         ],\
@@ -18252,6 +18254,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["ssr-window", [\
+      ["npm:4.0.2", {\
+        "packageLocation": "./.yarn/cache/ssr-window-npm-4.0.2-01f9c0151e-075b67794b.zip/node_modules/ssr-window/",\
+        "packageDependencies": [\
+          ["ssr-window", "npm:4.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["ssri", [\
       ["npm:10.0.5", {\
         "packageLocation": "./.yarn/cache/ssri-npm-10.0.5-1a7557d04d-453f9a1c24.zip/node_modules/ssri/",\
@@ -18690,6 +18701,16 @@ const RAW_RUNTIME_STATE =
           ["csso", "npm:4.2.0"],\
           ["picocolors", "npm:1.0.0"],\
           ["stable", "npm:0.1.8"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["swiper", [\
+      ["npm:9.4.1", {\
+        "packageLocation": "./.yarn/cache/swiper-npm-9.4.1-38d46d35a3-900db2e4d9.zip/node_modules/swiper/",\
+        "packageDependencies": [\
+          ["swiper", "npm:9.4.1"],\
+          ["ssr-window", "npm:4.0.2"]\
         ],\
         "linkType": "HARD"\
       }]\

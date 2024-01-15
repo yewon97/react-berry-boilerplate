@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
+import 'swiper/css'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
 import { getAdBanners } from '@remote/adBanner'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
@@ -16,16 +19,20 @@ export default function AdBanners() {
 
   return (
     <Container>
-      {data?.map(({ title, link, description }: AdBanner) => {
-        return (
-          <Link to={link}>
-            <Flex direction="column" css={bannerContainerStyles}>
-              <Text bold={true}>{title}</Text>
-              <Text typography="t7">{description}</Text>
-            </Flex>
-          </Link>
-        )
-      })}
+      <Swiper spaceBetween={8}>
+        {data?.map(({ title, link, description }: AdBanner, idx) => {
+          return (
+            <SwiperSlide key={idx}>
+              <Link to={link}>
+                <Flex direction="column" css={bannerContainerStyles}>
+                  <Text bold={true}>{title}</Text>
+                  <Text typography="t7">{description}</Text>
+                </Flex>
+              </Link>
+            </SwiperSlide>
+          )
+        })}
+      </Swiper>
     </Container>
   )
 }
