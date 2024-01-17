@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery, useInfiniteQuery } from 'react-query'
 
 import { getCards } from '@remote/card'
 
