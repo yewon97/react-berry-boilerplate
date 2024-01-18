@@ -31,5 +31,5 @@ export async function getCards(pageParam?: QuerySnapshot<Card>) {
     ...(doc.data() as Card),
   }))
 
-  return [items, lastVisible]
+  return { items, lastVisible }
 }
