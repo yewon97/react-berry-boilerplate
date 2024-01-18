@@ -41,6 +41,7 @@ export default function CardList() {
         hasMore={hasNextPage}
         loader={<></>}
         next={loadMore}
+        scrollThreshold="100px" // 어느 위치에서 데이터 fetch할지 정할 수 있음
       >
         {cards.map(({ name, payback, id }, idx) => {
           return (
