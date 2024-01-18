@@ -10,6 +10,8 @@ export interface Card {
   payback?: string
 }
 
+export type CardWithId = Card & { id: string }
+
 export interface AdBanner {
   title: string
   description: string
