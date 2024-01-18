@@ -4,17 +4,28 @@ import ListRow from '@shared/ListRow'
 import { Card } from '@models/card'
 
 import { flatten } from 'lodash'
+import { useCallback } from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 type CardWithId = Card & { id: string }
 
 export default function CardList() {
-  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
-    ['cards'],
-    ({ pageParam }) => getCards(pageParam),
-    {
-      getNextPageParam: (snapshot) => snapshot.lastVisible,
-    },
-  )
+  const {
+    data,
+    hasNextPage = false,
+    fetchNextPage,
+    isFetching,
+  } = useInfiniteQuery(['cards'], ({ pageParam }) => getCards(pageParam), {
+    getNextPageParam: (snapshot) => snapshot.lastVisible,
+  })
+
+  const loadMore = useCallback(() => {
+    if (hasNextPage === false || isFetching) {
+      return
+    }
+
+    fetchNextPage()
+  }, [fetchNextPage, hasNextPage, isFetching])
 
   if (data == null) {
     return null
@@ -24,7 +35,12 @@ export default function CardList() {
 
   return (
     <div>
-      <ul>
+      <InfiniteScroll
+        dataLength={cards.length}
+        hasMore={hasNextPage}
+        loader={<></>}
+        next={loadMore}
+      >
         <button type="button" onClick={() => fetchNextPage()}>
           데이터 불러오기
         </button>
@@ -40,7 +56,7 @@ export default function CardList() {
             />
           )
         })}
-      </ul>
+      </InfiniteScroll>
     </div>
   )
 }
