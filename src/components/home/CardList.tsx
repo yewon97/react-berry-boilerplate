@@ -41,7 +41,7 @@ export default function CardList() {
         loader={<></>}
         next={loadMore}
       >
-        {cards.map(({ corpName, benefit, name, tags, payback, id }, idx) => {
+        {cards.map(({ name, payback, id }, idx) => {
           return (
             <ListRow
               key={id}
