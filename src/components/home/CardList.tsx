@@ -6,6 +6,7 @@ import { Card } from '@models/card'
 import { flatten } from 'lodash'
 import { useCallback } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import Badge from '@shared/Badge'
 
 type CardWithId = Card & { id: string }
 
@@ -48,7 +49,7 @@ export default function CardList() {
               contents={
                 <ListRow.Texts title={`${idx + 1}위`} subTitle={name} />
               }
-              right={payback != null ? <div>{payback}</div> : null}
+              right={payback != null ? <Badge label={payback} /> : null}
               withArrow={true}
             />
           )
