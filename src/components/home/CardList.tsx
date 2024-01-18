@@ -43,18 +43,20 @@ export default function CardList() {
         next={loadMore}
         scrollThreshold="100px" // 어느 위치에서 데이터 fetch할지 정할 수 있음
       >
-        {cards.map(({ name, payback, id }, idx) => {
-          return (
-            <ListRow
-              key={id}
-              contents={
-                <ListRow.Texts title={`${idx + 1}위`} subTitle={name} />
-              }
-              right={payback != null ? <Badge label={payback} /> : null}
-              withArrow={true}
-            />
-          )
-        })}
+        <ul>
+          {cards.map(({ name, payback, id }, idx) => {
+            return (
+              <ListRow
+                key={id}
+                contents={
+                  <ListRow.Texts title={`${idx + 1}위`} subTitle={name} />
+                }
+                right={payback != null ? <Badge label={payback} /> : null}
+                withArrow={true}
+              />
+            )
+          })}
+        </ul>
       </InfiniteScroll>
     </div>
   )
