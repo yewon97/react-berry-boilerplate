@@ -41,9 +41,6 @@ export default function CardList() {
         loader={<></>}
         next={loadMore}
       >
-        <button type="button" onClick={() => fetchNextPage()}>
-          데이터 불러오기
-        </button>
         {cards.map(({ corpName, benefit, name, tags, payback, id }, idx) => {
           return (
             <ListRow
