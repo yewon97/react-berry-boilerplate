@@ -6,6 +6,9 @@ import { CardWithId } from '@models/card'
 import ListRow from '@shared/ListRow'
 import { colors } from '@styles/colorPalette'
 import FixedBottomButton from '@shared/FixedBottomButton'
+import Flex from '@shared/Flex'
+import Text from '@shared/Text'
+import { css } from '@emotion/react'
 
 export default function CardPage() {
   // id가 항상 있는게 아니라서 default value로 '' 를 부여함
@@ -42,6 +45,13 @@ export default function CardPage() {
           )
         })}
       </ul>
+
+      {promotion != null ? (
+        <Flex direction="column" css={termsContainerStyles}>
+          <Text bold={true}>유의사항</Text>
+          <Text typography="t7">{removeHtmlTags(promotion.terms)}</Text>
+        </Flex>
+      ) : null}
 
       <FixedBottomButton label="신청하기" onClick={() => {}} />
     </div>
@@ -80,3 +90,8 @@ function removeHtmlTags(text: string) {
 
   return output
 }
+
+const termsContainerStyles = css`
+  margin-top: 80px;
+  padding: 0 24px 80px 24px;
+`
