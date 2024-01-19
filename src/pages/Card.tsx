@@ -36,7 +36,27 @@ export default function CardPage() {
       <ul>
         {benefit.map((text, idx) => {
           return (
-            <motion.li>
+            <motion.li
+              initial={{
+                opacity: 0,
+                translateX: -90,
+              }}
+              // 스크롤 내려갔다가 올라올 때 다시 액션주기
+              // whileInView={{
+              //   opacity: 1,
+              //   translateX: 0,
+              // }}
+              transition={{
+                duration: 1.0,
+                // ease: 'easeInOut',
+                ease: [0.25, 0.1, 0.25, 0.1],
+                delay: idx * 0.1,
+              }}
+              animate={{
+                opacity: 1,
+                translateX: 0,
+              }}
+            >
               <ListRow
                 as="div"
                 key={text}
