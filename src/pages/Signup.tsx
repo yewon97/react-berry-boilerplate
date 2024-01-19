@@ -1,3 +1,10 @@
+import Form from '@signup/Form'
+import Flex from '@shared/Flex'
+
 export default function SignupPage() {
-  return <div>회원가입페이지 입니다.</div>
+  return (
+    <div>
+      <Form></Form>
+    </div>
+  )
 }
