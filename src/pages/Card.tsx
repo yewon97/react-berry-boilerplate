@@ -9,6 +9,7 @@ import FixedBottomButton from '@shared/FixedBottomButton'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import { css } from '@emotion/react'
+import { motion } from 'framer-motion'
 
 export default function CardPage() {
   // id가 항상 있는게 아니라서 default value로 '' 를 부여함
@@ -35,13 +36,16 @@ export default function CardPage() {
       <ul>
         {benefit.map((text, idx) => {
           return (
-            <ListRow
-              key={text}
-              left={<IconCheck />}
-              contents={
-                <ListRow.Texts title={`혜택 ${idx + 1}`} subTitle={text} />
-              }
-            />
+            <motion.li>
+              <ListRow
+                as="div"
+                key={text}
+                left={<IconCheck />}
+                contents={
+                  <ListRow.Texts title={`혜택 ${idx + 1}`} subTitle={text} />
+                }
+              />
+            </motion.li>
           )
         })}
       </ul>
