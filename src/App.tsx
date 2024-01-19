@@ -8,10 +8,13 @@ import SigninPage from '@pages/Signin'
 
 import ScrollToTop from '@shared/ScrollToTop'
 
+import Navbar from '@shared/Navbar'
+
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <Navbar />
       <Routes>
         <Route path="/" Component={HomePage} />
         <Route path="/signin" Component={SigninPage} />
