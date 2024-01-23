@@ -10,6 +10,8 @@ import globalStyles from './styles/globalStyles'
 
 import { AlertContextProvider } from '@contexts/AlertContext'
 
+import AuthGuard from '@components/auth/AuthGuard'
+
 const client = new QueryClient({
   defaultOptions: {},
 })
@@ -19,9 +21,11 @@ root.render(
   <React.StrictMode>
     <Global styles={globalStyles} />
     <QueryClientProvider client={client}>
-      <AlertContextProvider>
-        <App />
-      </AlertContextProvider>
+      <AuthGuard>
+        <AlertContextProvider>
+          <App />
+        </AlertContextProvider>
+      </AuthGuard>
     </QueryClientProvider>
   </React.StrictMode>,
 )
