@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth, store } from '@remote/firebase'
 import { collection, doc, setDoc } from 'firebase/firestore'
 
-import Form from '@signup/Form'
+import Form from '@components/signup/Form'
 import { FormValues } from '@models/signup'
 import { COLLECTIONS } from '@constants'
 
@@ -28,8 +28,8 @@ export default function SignupPage() {
   }
 
   return (
-    <div>
+    <form>
       <Form onSubmit={handleSubmit}></Form>
-    </div>
+    </form>
   )
 }
