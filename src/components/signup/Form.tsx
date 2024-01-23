@@ -23,7 +23,6 @@ export default function Form({
   // input의 값이 더러워졌는가를 체크하는 상태
   // 더러워졌을 때를 어떻게 감지하는가? -> blur 이벤트를 이용해서 감지
   const [dirty, setDirty] = useState<Partial<FormValues>>({})
-  console.log('dirty: ', dirty)
 
   // NOTE:: rerendering 함수도 계속 만들어짐
   // 바깥의 값에 의존안해서 useCallback으로 감싸주는게 좋음
@@ -46,7 +45,6 @@ export default function Form({
   }, [])
 
   const errors = useMemo(() => validate(formValues), [formValues])
-  console.log('errors: ', errors)
 
   const isPossibleToSubmit = Object.keys(errors).length === 0
 
