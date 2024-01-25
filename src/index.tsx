@@ -21,11 +21,11 @@ root.render(
   <React.StrictMode>
     <Global styles={globalStyles} />
     <QueryClientProvider client={client}>
-      <AuthGuard>
-        <AlertContextProvider>
+      <AlertContextProvider>
+        <AuthGuard>
           <App />
-        </AlertContextProvider>
-      </AuthGuard>
+        </AuthGuard>
+      </AlertContextProvider>
     </QueryClientProvider>
   </React.StrictMode>,
 )

@@ -28,8 +28,8 @@ export default function SignupPage() {
   }
 
   return (
-    <form>
+    <div>
       <Form onSubmit={handleSubmit}></Form>
-    </form>
+    </div>
   )
 }
