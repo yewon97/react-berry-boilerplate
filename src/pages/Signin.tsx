@@ -1,6 +1,7 @@
 import { FormValues } from '@models/signin'
 import Form from '@components/signin/Form'
 import { useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '@remote/firebase'
@@ -9,16 +10,15 @@ import { FirebaseError } from 'firebase/app'
 
 export default function SigninPage() {
   const { open } = useAlertContext()
+  const navigate = useNavigate()
 
   const handleSubmit = useCallback(
     async (formValues: FormValues) => {
       const { email, password } = formValues
-      console.log('email: ', email)
 
-      console.log('auth: ', auth)
       signInWithEmailAndPassword(auth, email, password)
         .then((res) => {
-          console.log('res: ', res)
+          navigate('/')
         })
         .catch((e) => {
           // firebase 의 에러
