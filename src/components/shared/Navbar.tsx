@@ -6,6 +6,7 @@ import Flex from '@shared/Flex'
 import { Link, useLocation } from 'react-router-dom'
 import { userAtom } from '@atoms/user'
 import useUser from '@hooks/auth/useUser'
+import { useCallback } from 'react'
 
 export default function Navbar() {
   const location = useLocation()
@@ -14,14 +15,26 @@ export default function Navbar() {
 
   const user = useUser()
 
-  return (
-    <Flex justify="space-between" align="center" css={navbarContainerStyles}>
-      <Link to="/">홈</Link>
-      {showSignButton ? (
+  const renderButton = useCallback(() => {
+    if (user != null) {
+      return <Button>로그아웃</Button>
+    }
+
+    if (showSignButton) {
+      return (
         <Link to="/signin">
           <Button>로그인/회원가입</Button>
         </Link>
-      ) : null}
+      )
+    }
+
+    return null
+  }, [user, showSignButton])
+
+  return (
+    <Flex justify="space-between" align="center" css={navbarContainerStyles}>
+      <Link to="/">홈</Link>
+      {renderButton()}
     </Flex>
   )
 }
