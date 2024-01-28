@@ -1,14 +1,18 @@
 import { colors } from '@styles/colorPalette'
 import { css } from '@emotion/react'
-
+import { useRecoilValue } from 'recoil'
 import Button from '@shared/Button'
 import Flex from '@shared/Flex'
 import { Link, useLocation } from 'react-router-dom'
+import { userAtom } from '@atoms/user'
+import useUser from '@hooks/auth/useUser'
 
 export default function Navbar() {
   const location = useLocation()
   const showSignButton =
     ['/signup', 'signin'].includes(location.pathname) === false
+
+  const user = useUser()
 
   return (
     <Flex justify="space-between" align="center" css={navbarContainerStyles}>
