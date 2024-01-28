@@ -7,6 +7,8 @@ import { Link, useLocation } from 'react-router-dom'
 import { userAtom } from '@atoms/user'
 import useUser from '@hooks/auth/useUser'
 import { useCallback } from 'react'
+import { signOut } from 'firebase/auth'
+import { auth } from '@remote/firebase'
 
 export default function Navbar() {
   const location = useLocation()
@@ -15,9 +17,13 @@ export default function Navbar() {
 
   const user = useUser()
 
+  const handleLogout = useCallback(() => {
+    signOut(auth)
+  }, [])
+
   const renderButton = useCallback(() => {
     if (user != null) {
-      return <Button>로그아웃</Button>
+      return <Button onClick={handleLogout}>로그아웃</Button>
     }
 
     if (showSignButton) {
@@ -29,7 +35,8 @@ export default function Navbar() {
     }
 
     return null
-  }, [user, showSignButton])
+    // useCallback 의존성 추가하는것 잊지말기
+  }, [user, showSignButton, handleLogout])
 
   return (
     <Flex justify="space-between" align="center" css={navbarContainerStyles}>
