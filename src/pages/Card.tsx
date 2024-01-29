@@ -1,7 +1,7 @@
 import Top from '@shared/Top'
 import { getCard } from '@remote/card'
 import { useQuery } from 'react-query'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { CardWithId } from '@models/card'
 import ListRow from '@shared/ListRow'
 import { colors } from '@styles/colorPalette'
@@ -10,15 +10,37 @@ import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import { css } from '@emotion/react'
 import { motion } from 'framer-motion'
+import { useCallback } from 'react'
+import useUser from '@hooks/auth/useUser'
+import { useAlertContext } from '@/contexts/AlertContext'
 
 export default function CardPage() {
+  const navigate = useNavigate()
+  const { open } = useAlertContext()
+
   // id가 항상 있는게 아니라서 default value로 '' 를 부여함
   const { id = '' } = useParams()
+  const user = useUser()
 
   const { data } = useQuery(['card', id], () => getCard(id), {
     // enabled >> id가 빈값이 아니면 호출하겠다~
     enabled: id !== '',
   })
+
+  const moveToApply = useCallback(() => {
+    if (user == null) {
+      open({
+        title: '로그인이 필요한 서비스입니다.',
+        onButtonClick: () => {
+          navigate('/signin')
+        },
+      })
+
+      return
+    }
+
+    navigate(`/apply/${id}`)
+  }, [user, id, open, navigate])
 
   if (data == null) {
     return null
@@ -77,7 +99,7 @@ export default function CardPage() {
         </Flex>
       ) : null}
 
-      <FixedBottomButton label="신청하기" onClick={() => {}} />
+      <FixedBottomButton label="신청하기" onClick={moveToApply} />
     </div>
   )
 }
