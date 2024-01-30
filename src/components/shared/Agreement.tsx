@@ -22,7 +22,7 @@ function AgreementTitle({
 }) {
   return (
     <Flex onClick={(e) => onChange(e, !checked)} as="li">
-      <IconCheck checked={checked} />
+      <IconCheck checked={checked} withCirlce={true} />
       <Text bold={true}>{children}</Text>
     </Flex>
   )
@@ -56,14 +56,22 @@ function AgreementDescription({
 Agreement.Title = AgreementTitle
 Agreement.Description = AgreementDescription
 
-function IconCheck({ checked }: { checked: boolean }) {
+function IconCheck({
+  checked,
+  withCirlce = false,
+}: {
+  checked: boolean
+  withCirlce?: boolean
+}) {
   return (
     <svg id="Layer_1" version="1.1" viewBox="0 0 48 48" width={24} height={24}>
       <g>
-        <path
-          d="M24,46C11.9,46,2,36.1,2,24S11.9,2,24,2s22,9.9,22,22S36.1,46,24,46z M24,4C13,4,4,13,4,24c0,11,9,20,20,20   c11,0,20-9,20-20C44,13,35,4,24,4z"
-          fill={checked ? colors.blue : colors.grey}
-        />
+        {withCirlce ? (
+          <path
+            d="M24,46C11.9,46,2,36.1,2,24S11.9,2,24,2s22,9.9,22,22S36.1,46,24,46z M24,4C13,4,4,13,4,24c0,11,9,20,20,20   c11,0,20-9,20-20C44,13,35,4,24,4z"
+            fill={checked ? colors.blue : colors.grey}
+          />
+        ) : null}
       </g>
       <g>
         <polygon
