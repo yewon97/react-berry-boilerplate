@@ -1,6 +1,6 @@
 import { Term } from '@models/apply'
 
-export const 약관목록 = [
+export const TermsList = [
   {
     id: '01',
     title: '카드신청 관련 안내 및 필수 동의',
