@@ -14,12 +14,14 @@ export default function Terms() {
     )
   })
 
-  console.log('termsAgreements: ', termsAgreements)
+  const allTermsChecked = Object.values(termsAgreements).every(
+    (isTrue) => isTrue,
+  )
 
   return (
     <Agreement>
       <Agreement.Title
-        checked={true}
+        checked={allTermsChecked}
         onChange={(e, checked) => {
           console.log(e)
           console.log(checked)
