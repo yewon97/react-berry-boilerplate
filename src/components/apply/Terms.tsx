@@ -1,8 +1,21 @@
 import Agreement from '@shared/Agreement'
 
 import { TermsList } from '@constants/apply'
+import { useState } from 'react'
 
 export default function Terms() {
+  const [termsAgreements, setTrmsAgreements] = useState(() => {
+    return TermsList.reduce<Record<string, boolean>>(
+      (prev, term) => ({
+        ...prev,
+        [term.id]: false,
+      }),
+      {},
+    )
+  })
+
+  console.log('termsAgreements: ', termsAgreements)
+
   return (
     <Agreement>
       <Agreement.Title
@@ -18,10 +31,13 @@ export default function Terms() {
         return (
           <Agreement.Description
             key={id}
-            checked={false}
+            checked={termsAgreements[id]}
             link={link}
             onChange={(e, checked) => {
-              console.log(checked)
+              setTrmsAgreements((prevTerms) => ({
+                ...prevTerms,
+                [id]: checked,
+              }))
             }}
           >
             {title}
