@@ -1,7 +1,7 @@
+import { useCallback, useState, MouseEvent } from 'react'
 import Agreement from '@shared/Agreement'
 
 import { TermsList } from '@constants/apply'
-import { useState } from 'react'
 
 export default function Terms() {
   const [termsAgreements, setTrmsAgreements] = useState(() => {
@@ -14,19 +14,28 @@ export default function Terms() {
     )
   })
 
+  const handleAllAgreement = useCallback(
+    (_: MouseEvent<HTMLElement>, checked: boolean) => {
+      setTrmsAgreements((prevTerms) => {
+        return Object.keys(prevTerms).reduce<Record<string, boolean>>(
+          (prev, key) => ({
+            ...prev,
+            [key]: checked,
+          }),
+          {},
+        )
+      })
+    },
+    [],
+  )
+
   const allTermsChecked = Object.values(termsAgreements).every(
     (isTrue) => isTrue,
   )
 
   return (
     <Agreement>
-      <Agreement.Title
-        checked={allTermsChecked}
-        onChange={(e, checked) => {
-          console.log(e)
-          console.log(checked)
-        }}
-      >
+      <Agreement.Title checked={allTermsChecked} onChange={handleAllAgreement}>
         약관에 모두 동의
       </Agreement.Title>
       {TermsList.map(({ id, title, link }) => {
