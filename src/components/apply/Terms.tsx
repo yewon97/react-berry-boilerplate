@@ -2,8 +2,13 @@ import { useCallback, useState, MouseEvent } from 'react'
 import Agreement from '@shared/Agreement'
 
 import { TermsList } from '@constants/apply'
+import FixedBottomButton from '@components/shared/FixedBottomButton'
 
-export default function Terms() {
+export default function Terms({
+  onNext,
+}: {
+  onNext: (terms: string[]) => void
+}) {
   const [termsAgreements, setTrmsAgreements] = useState(() => {
     return TermsList.reduce<Record<string, boolean>>(
       (prev, term) => ({
@@ -34,27 +39,39 @@ export default function Terms() {
   )
 
   return (
-    <Agreement>
-      <Agreement.Title checked={allTermsChecked} onChange={handleAllAgreement}>
-        약관에 모두 동의
-      </Agreement.Title>
-      {TermsList.map(({ id, title, link }) => {
-        return (
-          <Agreement.Description
-            key={id}
-            checked={termsAgreements[id]}
-            link={link}
-            onChange={(e, checked) => {
-              setTrmsAgreements((prevTerms) => ({
-                ...prevTerms,
-                [id]: checked,
-              }))
-            }}
-          >
-            {title}
-          </Agreement.Description>
-        )
-      })}
-    </Agreement>
+    <div>
+      <Agreement>
+        <Agreement.Title
+          checked={allTermsChecked}
+          onChange={handleAllAgreement}
+        >
+          약관에 모두 동의
+        </Agreement.Title>
+        {TermsList.map(({ id, title, link }) => {
+          return (
+            <Agreement.Description
+              key={id}
+              checked={termsAgreements[id]}
+              link={link}
+              onChange={(e, checked) => {
+                setTrmsAgreements((prevTerms) => ({
+                  ...prevTerms,
+                  [id]: checked,
+                }))
+              }}
+            >
+              {title}
+            </Agreement.Description>
+          )
+        })}
+      </Agreement>
+      <FixedBottomButton
+        label="약관동의"
+        disabled={allTermsChecked === false}
+        onClick={() => {
+          onNext(Object.keys(termsAgreements))
+        }}
+      />
+    </div>
   )
 }
