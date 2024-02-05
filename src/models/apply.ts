@@ -12,3 +12,8 @@ export interface ApplyValues {
   appliedAt: Date
   cardId: string
 }
+
+export interface Option {
+  label: string
+  value: string | number | undefined
+}
