@@ -13,13 +13,18 @@ export default function BasicInfo() {
     payDate: '',
   })
 
+  console.log('infoValues: ', infoValues)
   const handleInfoChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.target)
+    setInfoValues((prevValues) => ({
+      ...prevValues,
+      [e.target.name]: e.target.value,
+    }))
   }, [])
 
   return (
     <div>
       <Select
+        name="salary"
         label="연소득"
         options={연소득옵션}
         placeholder={연소득옵션[0].label}
@@ -27,6 +32,7 @@ export default function BasicInfo() {
         onChange={handleInfoChange}
       />
       <Select
+        name="creditScore"
         label="신용점수"
         options={신용점수옵션}
         placeholder={신용점수옵션[0].label}
@@ -34,6 +40,7 @@ export default function BasicInfo() {
         onChange={handleInfoChange}
       />
       <Select
+        name="payDate"
         label="결제일"
         options={결제일옵션}
         placeholder={결제일옵션[0].label}
