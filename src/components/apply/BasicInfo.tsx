@@ -3,6 +3,7 @@ import { ChangeEvent, useCallback, useState } from 'react'
 import { 연소득옵션, 신용점수옵션, 결제일옵션 } from '@constants/apply'
 import Select from '@components/shared/Select'
 import { ApplyValues } from '@models/apply'
+import FixedBottomButton from '@shared/FixedBottomButton'
 
 type InfoValues = Pick<ApplyValues, 'salary' | 'creditScore' | 'payDate'>
 
@@ -13,13 +14,14 @@ export default function BasicInfo() {
     payDate: '',
   })
 
-  console.log('infoValues: ', infoValues)
   const handleInfoChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
     setInfoValues((prevValues) => ({
       ...prevValues,
       [e.target.name]: e.target.value,
     }))
   }, [])
+
+  const isAllSelected = Object.values(infoValues).every((value) => value)
 
   return (
     <div>
@@ -46,6 +48,13 @@ export default function BasicInfo() {
         placeholder={결제일옵션[0].label}
         value={infoValues.payDate}
         onChange={handleInfoChange}
+      />
+
+      <FixedBottomButton
+        label="다음"
+        // isAllSelected가 true면 상위페이지로 이벤트를 넘길 것임
+        onClick={() => {}}
+        disabled={isAllSelected === false}
       />
     </div>
   )
