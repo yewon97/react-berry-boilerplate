@@ -7,7 +7,11 @@ import FixedBottomButton from '@shared/FixedBottomButton'
 
 type InfoValues = Pick<ApplyValues, 'salary' | 'creditScore' | 'payDate'>
 
-export default function BasicInfo() {
+export default function BasicInfo({
+  onNext,
+}: {
+  onNext: (infoValues: InfoValues) => void
+}) {
   const [infoValues, setInfoValues] = useState<InfoValues>({
     salary: '',
     creditScore: '',
@@ -53,7 +57,9 @@ export default function BasicInfo() {
       <FixedBottomButton
         label="다음"
         // isAllSelected가 true면 상위페이지로 이벤트를 넘길 것임
-        onClick={() => {}}
+        onClick={() => {
+          onNext(infoValues)
+        }}
         disabled={isAllSelected === false}
       />
     </div>

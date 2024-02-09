@@ -1,13 +1,13 @@
 import { useCallback, useState, MouseEvent } from 'react'
 import Agreement from '@shared/Agreement'
-
+import { ApplyValues } from '@models/apply'
 import { TermsList } from '@constants/apply'
 import FixedBottomButton from '@components/shared/FixedBottomButton'
 
 export default function Terms({
   onNext,
 }: {
-  onNext: (terms: string[]) => void
+  onNext: (terms: ApplyValues['terms']) => void
 }) {
   const [termsAgreements, setTrmsAgreements] = useState(() => {
     return TermsList.reduce<Record<string, boolean>>(
