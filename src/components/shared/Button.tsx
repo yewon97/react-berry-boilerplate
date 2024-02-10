@@ -10,6 +10,7 @@ import {
 
 import Flex from '@components/shared/Flex'
 import Text from '@components/shared/Text'
+import Spacing from '@shared/Spacing'
 
 interface ButtonProps {
   color?: ButtonColor
@@ -59,8 +60,15 @@ function ButtonGroup({
   children: React.ReactNode
 }) {
   return (
-    <Flex>
-      {title != null ? <Text>{title}</Text> : null}
+    <Flex direction="column">
+      {title != null ? (
+        <>
+          <Text typography="t6" bold={true}>
+            {title}
+          </Text>
+          <Spacing size={8} />
+        </>
+      ) : null}
       <Flex css={buttonGroupStyle}>{children}</Flex>
     </Flex>
   )
