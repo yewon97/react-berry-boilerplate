@@ -2,6 +2,7 @@ import Button from '@shared/Button'
 import Spacing from '@shared/Spacing'
 import { ApplyValues } from '@models/apply'
 import { MouseEvent, useCallback, useState } from 'react'
+import FixedBottomButton from '@shared/FixedBottomButton'
 
 type CardInfoValues = Pick<ApplyValues, 'isMaster' | 'isHipass' | 'isRf'>
 
@@ -95,6 +96,13 @@ export default function CardInfo({
           신청
         </Button>
       </Button.Group>
+
+      <FixedBottomButton
+        label="다음"
+        onClick={() => {
+          onNext(cardInfoValues)
+        }}
+      />
     </div>
   )
 }
