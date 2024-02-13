@@ -20,11 +20,17 @@ export default function ApplyPage() {
     console.log('BasicInfo infoValues: ', infoValues)
   }
 
+  const handleCardInfoChange = (
+    cardInfoValues: Pick<ApplyValues, 'isMaster' | 'isHipass' | 'isRf'>,
+  ) => {
+    console.log('cardInfoValues: ', cardInfoValues)
+  }
+
   return (
     <>
       {step === 0 ? <Terms onNext={handleTermsChange} /> : null}
       {step === 1 ? <BasicInfo onNext={handleBasicInfoChange} /> : null}
-      {step === 2 ? <CardInfo /> : null}
+      {step === 2 ? <CardInfo onNext={handleCardInfoChange} /> : null}
     </>
   )
 }

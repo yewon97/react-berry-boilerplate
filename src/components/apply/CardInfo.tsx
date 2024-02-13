@@ -5,14 +5,16 @@ import { MouseEvent, useCallback, useState } from 'react'
 
 type CardInfoValues = Pick<ApplyValues, 'isMaster' | 'isHipass' | 'isRf'>
 
-export default function CardInfo() {
+export default function CardInfo({
+  onNext,
+}: {
+  onNext: (cardInfoValues: CardInfoValues) => void
+}) {
   const [cardInfoValues, setCardInfoValues] = useState<CardInfoValues>({
     isMaster: false,
     isHipass: false,
     isRf: false,
   })
-
-  console.log('cardInfoValues: ', cardInfoValues)
 
   const { isHipass, isMaster, isRf } = cardInfoValues
 
