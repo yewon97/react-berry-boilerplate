@@ -4,12 +4,20 @@ import Terms from '@components/apply/Terms'
 import { useEffect, useState } from 'react'
 
 import { ApplyValues } from '@models/apply'
+import useUser from '@hooks/auth/useUser'
+import { useParams } from 'react-router-dom'
 
 export default function Apply({ onSubmit }: { onSubmit: () => void }) {
+  const user = useUser()
+  const { id } = useParams() as { id: string }
+
   // 적절한 관심사 분리
   const [step, setStep] = useState(0)
 
-  const [applyValues, setApplyValues] = useState<Partial<ApplyValues>>({})
+  const [applyValues, setApplyValues] = useState<Partial<ApplyValues>>({
+    userId: user?.uid,
+    cardId: id,
+  })
 
   useEffect(() => {
     if (step === 3) {
