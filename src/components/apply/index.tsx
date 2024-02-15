@@ -5,13 +5,10 @@ import { useState } from 'react'
 
 import { ApplyValues } from '@models/apply'
 
-export default function Apply({
-  step,
-  onSubmit,
-}: {
-  step: number
-  onSubmit: () => void
-}) {
+export default function Apply({ onSubmit }: { onSubmit: () => void }) {
+  // 적절한 관심사 분리
+  const [step, setStep] = useState(2)
+
   const [applyValues, setApplyValues] = useState<Partial<ApplyValues>>({})
   // 카드신청하는 페이지 -> 데이터를 모으고 있음
   // 카드신청 페이지에서는 데이터 변화하는건 별로 궁금하지 않음
@@ -25,6 +22,8 @@ export default function Apply({
       ...prevValues,
       terms,
     }))
+
+    setStep((prevStep) => prevStep + 1)
   }
 
   const handleBasicInfoChange = (
@@ -34,6 +33,8 @@ export default function Apply({
       ...prevValues,
       ...infoValues,
     }))
+
+    setStep((prevStep) => prevStep + 1)
   }
 
   const handleCardInfoChange = (
@@ -43,6 +44,8 @@ export default function Apply({
       ...prevValues,
       ...cardInfoValues,
     }))
+
+    setStep((prevStep) => prevStep + 1)
   }
 
   return (
