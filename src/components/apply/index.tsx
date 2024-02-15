@@ -7,7 +7,11 @@ import { ApplyValues, APPLY_STATUS } from '@models/apply'
 import useUser from '@hooks/auth/useUser'
 import { useParams } from 'react-router-dom'
 
-export default function Apply({ onSubmit }: { onSubmit: () => void }) {
+export default function Apply({
+  onSubmit,
+}: {
+  onSubmit: (applyValues: ApplyValues) => void
+}) {
   const user = useUser()
   const { id } = useParams() as { id: string }
 
@@ -21,13 +25,13 @@ export default function Apply({ onSubmit }: { onSubmit: () => void }) {
 
   useEffect(() => {
     if (step === 3) {
-      console.log({
+      onSubmit({
         ...applyValues,
         appliedAt: new Date(),
         status: APPLY_STATUS.READY,
-      })
+      } as ApplyValues)
     }
-  }, [step, applyValues])
+  }, [step, applyValues, onSubmit])
   // 카드신청하는 페이지 -> 데이터를 모으고 있음
   // 카드신청 페이지에서는 데이터 변화하는건 별로 궁금하지 않음
   // 완성본만 궁금함
