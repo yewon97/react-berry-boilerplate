@@ -3,7 +3,7 @@ import CardInfo from '@components/apply/CardInfo'
 import Terms from '@components/apply/Terms'
 import { useEffect, useState } from 'react'
 
-import { ApplyValues } from '@models/apply'
+import { ApplyValues, APPLY_STATUS } from '@models/apply'
 import useUser from '@hooks/auth/useUser'
 import { useParams } from 'react-router-dom'
 
@@ -21,7 +21,11 @@ export default function Apply({ onSubmit }: { onSubmit: () => void }) {
 
   useEffect(() => {
     if (step === 3) {
-      console.log(applyValues)
+      console.log({
+        ...applyValues,
+        appliedAt: new Date(),
+        status: APPLY_STATUS.READY,
+      })
     }
   }, [step, applyValues])
   // 카드신청하는 페이지 -> 데이터를 모으고 있음
