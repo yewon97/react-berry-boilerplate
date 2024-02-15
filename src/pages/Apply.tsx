@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import Apply from '@/components/apply'
+import useApplyCardMutation from '@components/apply/hooks/useApplyCardMutation'
 
 export default function ApplyPage() {
-  const handleSubmit = () => {
-    // TODO: 카드신청
-  }
+  const { mutate } = useApplyCardMutation()
 
-  return <Apply onSubmit={handleSubmit} />
+  return <Apply onSubmit={mutate} />
 }
