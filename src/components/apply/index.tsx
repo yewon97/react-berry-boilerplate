@@ -1,15 +1,21 @@
 import BasicInfo from '@components/apply/BasicInfo'
 import CardInfo from '@components/apply/CardInfo'
 import Terms from '@components/apply/Terms'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { ApplyValues } from '@models/apply'
 
 export default function Apply({ onSubmit }: { onSubmit: () => void }) {
   // 적절한 관심사 분리
-  const [step, setStep] = useState(2)
+  const [step, setStep] = useState(0)
 
   const [applyValues, setApplyValues] = useState<Partial<ApplyValues>>({})
+
+  useEffect(() => {
+    if (step === 3) {
+      console.log(applyValues)
+    }
+  }, [step, applyValues])
   // 카드신청하는 페이지 -> 데이터를 모으고 있음
   // 카드신청 페이지에서는 데이터 변화하는건 별로 궁금하지 않음
   // 완성본만 궁금함
