@@ -12,6 +12,7 @@ export default function Apply({
   step: number
   onSubmit: () => void
 }) {
+  const [applyValues, setApplyValues] = useState<Partial<ApplyValues>>({})
   // 카드신청하는 페이지 -> 데이터를 모으고 있음
   // 카드신청 페이지에서는 데이터 변화하는건 별로 궁금하지 않음
   // 완성본만 궁금함
@@ -20,19 +21,28 @@ export default function Apply({
   // pick 으로 뽑게되면 객체로 나옴
   // terms는 string array니까 ApplyValues['terms'] --> 이렇게 type 지정해야함
   const handleTermsChange = (terms: ApplyValues['terms']) => {
-    console.log('terms: ', terms)
+    setApplyValues((prevValues) => ({
+      ...prevValues,
+      terms,
+    }))
   }
 
   const handleBasicInfoChange = (
     infoValues: Pick<ApplyValues, 'salary' | 'creditScore' | 'payDate'>,
   ) => {
-    console.log('BasicInfo infoValues: ', infoValues)
+    setApplyValues((prevValues) => ({
+      ...prevValues,
+      ...infoValues,
+    }))
   }
 
   const handleCardInfoChange = (
     cardInfoValues: Pick<ApplyValues, 'isMaster' | 'isHipass' | 'isRf'>,
   ) => {
-    console.log('cardInfoValues: ', cardInfoValues)
+    setApplyValues((prevValues) => ({
+      ...prevValues,
+      ...cardInfoValues,
+    }))
   }
 
   return (
