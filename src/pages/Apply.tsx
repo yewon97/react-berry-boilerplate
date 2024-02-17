@@ -9,6 +9,7 @@ export default function ApplyPage() {
     },
     onError: () => {
       // 실패했을 때 => 폴링시작
+      window.history.back()
     },
   })
 

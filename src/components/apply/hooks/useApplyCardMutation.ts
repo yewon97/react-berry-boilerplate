@@ -1,3 +1,4 @@
+import { useAlertContext } from '@contexts/AlertContext'
 import { ApplyValues } from '@models/apply'
 import { applyCard } from '@remote/apply'
 import { useMutation } from 'react-query'
@@ -11,12 +12,26 @@ export default function useApplyCardMutation({
   onSuccess,
   onError,
 }: useApplyCardMutationProps) {
-  return useMutation((applyValues: ApplyValues) => applyCard(applyValues), {
-    onSuccess: () => {
-      onSuccess()
+  const { open } = useAlertContext()
+
+  return useMutation(
+    (applyValues: ApplyValues) => {
+      console.log('applyValues: ', applyValues)
+
+      return applyCard(applyValues)
     },
-    onError: () => {
-      onError()
+    {
+      onSuccess: () => {
+        onSuccess()
+      },
+      onError: () => {
+        open({
+          title: '카드를 신청하지 못했어요. 나중에 다시 시도해주세요.',
+          onButtonClick: () => {
+            onError()
+          },
+        })
+      },
     },
-  })
+  )
 }
