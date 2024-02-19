@@ -2,16 +2,35 @@ import { useState } from 'react'
 import Apply from '@/components/apply'
 import useApplyCardMutation from '@components/apply/hooks/useApplyCardMutation'
 import usePollApplyStatus from '@components/apply/hooks/usePollApplyStatus'
+import { updateApplyCard } from '@remote/apply'
+import { APPLY_STATUS } from '@models/apply'
+import useUser from '@hooks/auth/useUser'
+import { useParams } from 'react-router-dom'
 
 export default function ApplyPage() {
   const [readyToPoll, setReadyToPoll] = useState(false)
 
+  const user = useUser()
+  const { id } = useParams() as { id: string }
+
   usePollApplyStatus({
     onSuccess: () => {
-      console.log('성공')
+      updateApplyCard({
+        userId: user?.uid as string,
+        cardId: id,
+        applyValues: {
+          status: APPLY_STATUS.COMPLETE,
+        },
+      })
     },
     onError: () => {
-      console.log('실패')
+      updateApplyCard({
+        userId: user?.uid as string,
+        cardId: id,
+        applyValues: {
+          status: APPLY_STATUS.REJECT,
+        },
+      })
     },
     enabled: readyToPoll,
   })
