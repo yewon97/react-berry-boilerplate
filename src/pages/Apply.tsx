@@ -35,7 +35,7 @@ export default function ApplyPage() {
     enabled: readyToPoll,
   })
 
-  const { mutate } = useApplyCardMutation({
+  const { mutate, isLoading: 카드를신청중인가 } = useApplyCardMutation({
     onSuccess: () => {
       // 값이 추가되었을 때 => 폴링시작
       setReadyToPoll(true)
@@ -45,6 +45,10 @@ export default function ApplyPage() {
       window.history.back()
     },
   })
+
+  if (readyToPoll || 카드를신청중인가) {
+    return <div>Loading...</div>
+  }
 
   return <Apply onSubmit={mutate} />
 }
