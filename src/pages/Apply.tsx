@@ -5,32 +5,37 @@ import usePollApplyStatus from '@components/apply/hooks/usePollApplyStatus'
 import { updateApplyCard } from '@remote/apply'
 import { APPLY_STATUS } from '@models/apply'
 import useUser from '@hooks/auth/useUser'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 export default function ApplyPage() {
+  const navigate = useNavigate()
+
   const [readyToPoll, setReadyToPoll] = useState(false)
 
   const user = useUser()
   const { id } = useParams() as { id: string }
 
   usePollApplyStatus({
-    onSuccess: () => {
-      updateApplyCard({
+    onSuccess: async () => {
+      await updateApplyCard({
         userId: user?.uid as string,
         cardId: id,
         applyValues: {
           status: APPLY_STATUS.COMPLETE,
         },
       })
+      navigate('/apply/done?success=true')
     },
-    onError: () => {
-      updateApplyCard({
+    onError: async () => {
+      await updateApplyCard({
         userId: user?.uid as string,
         cardId: id,
         applyValues: {
           status: APPLY_STATUS.REJECT,
         },
       })
+
+      navigate('/apply/done?success=false')
     },
     enabled: readyToPoll,
   })
