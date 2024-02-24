@@ -6,6 +6,7 @@ import { updateApplyCard } from '@remote/apply'
 import { APPLY_STATUS } from '@models/apply'
 import useUser from '@hooks/auth/useUser'
 import { useParams, useNavigate } from 'react-router-dom'
+import useAppliedCard from '@components/apply/hooks/useAppliedCard'
 
 export default function ApplyPage() {
   const navigate = useNavigate()
@@ -14,6 +15,16 @@ export default function ApplyPage() {
 
   const user = useUser()
   const { id } = useParams() as { id: string }
+
+  const { data } = useAppliedCard({
+    userId: user?.uid as string,
+    cardId: id,
+    options: {
+      onSuccess: () => {},
+      onError: () => {},
+      suspense: true, // <Suspense fallback={}>
+    },
+  })
 
   usePollApplyStatus({
     onSuccess: async () => {
