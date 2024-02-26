@@ -7,9 +7,12 @@ import { APPLY_STATUS } from '@models/apply'
 import useUser from '@hooks/auth/useUser'
 import { useParams, useNavigate } from 'react-router-dom'
 import useAppliedCard from '@components/apply/hooks/useAppliedCard'
+import { useAlertContext } from '@contexts/AlertContext'
 
 export default function ApplyPage() {
   const navigate = useNavigate()
+
+  const { open } = useAlertContext()
 
   const [readyToPoll, setReadyToPoll] = useState(false)
 
@@ -20,7 +23,25 @@ export default function ApplyPage() {
     userId: user?.uid as string,
     cardId: id,
     options: {
-      onSuccess: () => {},
+      onSuccess: (applied) => {
+        if (applied == null) {
+          return
+        }
+
+        if (applied.status === APPLY_STATUS.COMPLETE) {
+          open({
+            title: '이미 발급이 완료된 카드입니다.',
+            onButtonClick: () => {
+              window.history.back()
+            },
+          })
+
+          return
+        }
+
+        // 카드 신청건이 있는데 완료 상태가 아님
+        setReadyToPoll(true) // 카드사로 재심사 (폴링)
+      },
       onError: () => {},
       suspense: true, // <Suspense fallback={}>
     },
@@ -61,6 +82,11 @@ export default function ApplyPage() {
       window.history.back()
     },
   })
+
+  if (data != null && data.status === APPLY_STATUS.COMPLETE) {
+    // 이미 완료된 카드입니다. 노출 백그라운드 아무것도 노출 안됨
+    return null
+  }
 
   if (readyToPoll || 카드를신청중인가) {
     return <div>Loading...</div>
