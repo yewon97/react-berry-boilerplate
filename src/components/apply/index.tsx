@@ -15,23 +15,21 @@ export default function Apply({
   const user = useUser()
   const { id } = useParams() as { id: string }
 
-  // 적절한 관심사 분리
-  const [step, setStep] = useState(0)
-
   const [applyValues, setApplyValues] = useState<Partial<ApplyValues>>({
     userId: user?.uid,
     cardId: id,
+    step: 0,
   })
 
   useEffect(() => {
-    if (step === 3) {
+    if (applyValues.step === 3) {
       onSubmit({
         ...applyValues,
         appliedAt: new Date(),
         status: APPLY_STATUS.READY,
       } as ApplyValues)
     }
-  }, [step, applyValues, onSubmit])
+  }, [applyValues, onSubmit])
   // 카드신청하는 페이지 -> 데이터를 모으고 있음
   // 카드신청 페이지에서는 데이터 변화하는건 별로 궁금하지 않음
   // 완성본만 궁금함
@@ -43,9 +41,8 @@ export default function Apply({
     setApplyValues((prevValues) => ({
       ...prevValues,
       terms,
+      step: (applyValues.step as number) + 1,
     }))
-
-    setStep((prevStep) => prevStep + 1)
   }
 
   const handleBasicInfoChange = (
@@ -54,9 +51,8 @@ export default function Apply({
     setApplyValues((prevValues) => ({
       ...prevValues,
       ...infoValues,
+      step: (applyValues.step as number) + 1,
     }))
-
-    setStep((prevStep) => prevStep + 1)
   }
 
   const handleCardInfoChange = (
@@ -65,16 +61,19 @@ export default function Apply({
     setApplyValues((prevValues) => ({
       ...prevValues,
       ...cardInfoValues,
+      step: (applyValues.step as number) + 1,
     }))
-
-    setStep((prevStep) => prevStep + 1)
   }
 
   return (
     <>
-      {step === 0 ? <Terms onNext={handleTermsChange} /> : null}
-      {step === 1 ? <BasicInfo onNext={handleBasicInfoChange} /> : null}
-      {step === 2 ? <CardInfo onNext={handleCardInfoChange} /> : null}
+      {applyValues.step === 0 ? <Terms onNext={handleTermsChange} /> : null}
+      {applyValues.step === 1 ? (
+        <BasicInfo onNext={handleBasicInfoChange} />
+      ) : null}
+      {applyValues.step === 2 ? (
+        <CardInfo onNext={handleCardInfoChange} />
+      ) : null}
     </>
   )
 }
