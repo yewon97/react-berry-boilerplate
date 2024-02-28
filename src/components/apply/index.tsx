@@ -34,6 +34,8 @@ export default function Apply({
 
   useEffect(() => {
     if (applyValues.step === 3) {
+      localStorage.removeItem(storageKey)
+
       onSubmit({
         ...applyValues,
         appliedAt: new Date(),
