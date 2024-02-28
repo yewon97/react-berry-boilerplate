@@ -15,6 +15,8 @@ export default function Apply({
   const user = useUser()
   const { id } = useParams() as { id: string }
 
+  const storageKey = `applied-${user?.uid}-${id}`
+
   const [applyValues, setApplyValues] = useState<Partial<ApplyValues>>({
     userId: user?.uid,
     cardId: id,
@@ -28,8 +30,10 @@ export default function Apply({
         appliedAt: new Date(),
         status: APPLY_STATUS.READY,
       } as ApplyValues)
+    } else {
+      localStorage.setItem(storageKey, JSON.stringify(applyValues))
     }
-  }, [applyValues, onSubmit])
+  }, [applyValues, onSubmit, storageKey])
   // 카드신청하는 페이지 -> 데이터를 모으고 있음
   // 카드신청 페이지에서는 데이터 변화하는건 별로 궁금하지 않음
   // 완성본만 궁금함
