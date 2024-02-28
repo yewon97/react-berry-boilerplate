@@ -17,10 +17,19 @@ export default function Apply({
 
   const storageKey = `applied-${user?.uid}-${id}`
 
-  const [applyValues, setApplyValues] = useState<Partial<ApplyValues>>({
-    userId: user?.uid,
-    cardId: id,
-    step: 0,
+  // 지연초기화 (리렌더링 되어도 최초에 한번만)
+  const [applyValues, setApplyValues] = useState<Partial<ApplyValues>>(() => {
+    const applied = localStorage.getItem(storageKey)
+
+    if (applied == null) {
+      return {
+        userId: user?.uid,
+        cardId: id,
+        step: 0,
+      }
+    }
+
+    return JSON.parse(applied)
   })
 
   useEffect(() => {
