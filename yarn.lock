@@ -3752,7 +3752,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4":
+"@types/lodash.flatten@npm:^4":
+  version: 4.4.9
+  resolution: "@types/lodash.flatten@npm:4.4.9"
+  dependencies:
+    "@types/lodash": "npm:*"
+  checksum: d814b9c3798b4ca94d714a18786e0a914714d0b062998e652f1c92e746808a19ffe7c5b6541fe6882db1fdc788f87811ba3a8f8042d1dd19c4eb0b9cbe688ae4
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:*, @types/lodash@npm:^4":
   version: 4.14.202
   resolution: "@types/lodash@npm:4.14.202"
   checksum: 1bb9760a5b1dda120132c4b987330d67979c95dbc22612678682cd61b00302e190f4207228f3728580059cdab5582362262e3819aea59960c1017bd2b9fb26f6
@@ -9845,6 +9854,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.flatten@npm:^4.4.0":
+  version: 4.4.0
+  resolution: "lodash.flatten@npm:4.4.0"
+  checksum: a2b192f220b0b6c78a6c0175e96bad888b9e0f2a887a8e8c1d0c29d03231fbf110bbb9be0d9de5f936537d143eeb9d5b4f44c4a44f5592c195bf2fae6a6b1e3a
+  languageName: node
+  linkType: hard
+
 "lodash.memoize@npm:^4.1.2":
   version: 4.1.2
   resolution: "lodash.memoize@npm:4.1.2"
@@ -12072,6 +12088,7 @@ __metadata:
     "@types/eslint": "npm:^8"
     "@types/jest": "npm:^27.0.1"
     "@types/lodash": "npm:^4"
+    "@types/lodash.flatten": "npm:^4"
     "@types/node": "npm:^16.7.13"
     "@types/qs": "npm:^6.9.12"
     "@types/react": "npm:^18.0.0"
@@ -12088,6 +12105,7 @@ __metadata:
     firebase: "npm:^10.7.1"
     framer-motion: "npm:^10.18.0"
     lodash: "npm:^4.17.21"
+    lodash.flatten: "npm:^4.4.0"
     prettier: "npm:^3.1.1"
     qs: "npm:^6.11.2"
     react: "npm:^18.2.0"
