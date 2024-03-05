@@ -15,7 +15,18 @@ import { colors } from '@styles/colorPalette'
 import { AdBanner } from '@models/card'
 
 export default function AdBanners() {
-  const { data } = useQuery(['addBanners'], () => getAdBanners())
+  const { data, isLoading } = useQuery(['addBanners'], () => getAdBanners())
+
+  if (data == null || isLoading) {
+    return (
+      <Container>
+        <Flex direction="column" css={bannerContainerStyles}>
+          <Text bold={true}>$nbsp;</Text>
+          <Text typography="t7">$nbsp;</Text>
+        </Flex>
+      </Container>
+    )
+  }
 
   return (
     <Container>
